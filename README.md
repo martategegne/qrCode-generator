@@ -49,3 +49,19 @@ Social media profiles
 5, The frontend displays the QR code immediately and provides a download link.
 
 6, Each time a QR code is accessed via its scan URL, the scan count is incremented.
+
+**Purpose / Motivation**
+
+Most QR code generators today are premium or require technical knowledge, which can be a barrier for people in countries with limited internet access or for new tech learners.
+
+The current systems often do not support inclusive technology learning, making advanced tools available only to professionals.
+
+This QR Code Generator was developed to:
+
+Encourage new tech learners to experiment with digital tools.
+
+Promote tech development globally, making software accessible to everyone.
+
+Include all parts of the community in the digital and tech ecosystem, regardless of location or technical experience.
+
+By providing a fast, simple, and free QR generator, this project aims to bridge the gap and make modern technology usable and understandable by a wider audience.
