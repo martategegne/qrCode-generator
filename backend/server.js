@@ -11,8 +11,14 @@ const app = express();
 // --- Middleware ---
 app.use(express.json());
 app.use(helmet());
+
+// Allow requests from local frontend and deployed frontend
 app.use(cors({
-  origin: ["http://localhost:3000", "http://localhost:5173"]
+  origin: [
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "https://your-netlify-site.netlify.app" // replace with your real Netlify URL
+  ]
 }));
 
 const limiter = rateLimit({
@@ -22,7 +28,9 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // --- Database Connection ---
-mongoose.connect("mongodb://127.0.0.1:27017/qrcodeDB")
+const mongoURI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/qrcodeDB";
+
+mongoose.connect(mongoURI)
   .then(() => console.log("Connected to MongoDB..."))
   .catch(err => console.error("Could not connect to MongoDB:", err));
 
@@ -31,6 +39,7 @@ app.use("/api/qr", qrRoutes);
 
 // --- Server Startup ---
 const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
